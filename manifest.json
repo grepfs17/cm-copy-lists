@@ -1,0 +1,23 @@
+{
+  "name": "CM Copy List",
+  "description": "Copy the list of cards in the current view of Cardmarket to the clipboard.",
+  "version": "1.0",
+  "manifest_version": 3,
+    "permissions": [
+        "activeTab",
+        "clipboardWrite",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://www.cardmarket.com/*"
+    ],
+  "action": {
+    "default_icon": "cm_logo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.cardmarket.com/*/Magic/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
