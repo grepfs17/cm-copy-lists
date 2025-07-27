@@ -19,4 +19,6 @@ A minimal Chrome extension that adds one-click “copy card info” buttons to t
 
   ## Why?
 Because sharing lists between users while keeping the exact card (expansion) can be a pain.
+## Chrome store?
+In progress, soon.
 
