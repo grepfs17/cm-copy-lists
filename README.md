@@ -1,5 +1,7 @@
 # CM Copy List – Chrome Extension
-A minimal Chrome extension that adds one-click “copy card info” buttons to the Cardmarket website, letting you export the exact contents  want list as plain text.
+A minimal Chrome extension that adds one-click “copy card info” buttons to the Cardmarket website, letting you export the exact contents of a wants list as plain text.
+
+
 
 ## 🚀 What it does
 | Feature             | Where it appears                                       | What it copies                                                                |
@@ -14,4 +16,7 @@ A minimal Chrome extension that adds one-click “copy card info” buttons to t
 - Click “Load unpacked” and select the extension folder.
 - Visit any Cardmarket page with a card table (e.g. a deck list, “Wants” results).
 - Enjoy the new copy buttons!
+
+  ## Why?
+Because sharing lists between users while keeping the exact card (expansion) can be a pain.
 
