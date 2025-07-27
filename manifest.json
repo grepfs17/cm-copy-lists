@@ -16,7 +16,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.cardmarket.com/*/Magic/*"],
+      "matches": ["https://www.cardmarket.com/*/Magic/Wants/*"],
       "js": ["content.js"]
     }
   ]
