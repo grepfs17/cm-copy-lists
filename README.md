@@ -14,7 +14,7 @@ A minimal Chrome extension that adds one-click “copy card info” buttons to t
 - Open chrome://extensions in Chrome.
 - Enable Developer mode (toggle in the top-right).
 - Click “Load unpacked” and select the extension folder.
-- Visit any Cardmarket page with a card table (e.g. a deck list, “Wants” results).
+- Visit any Cardmarket page and go to your Wants.
 - Enjoy the new copy buttons!
 
   ## Why?
