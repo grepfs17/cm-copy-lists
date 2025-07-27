@@ -18,7 +18,11 @@ A minimal Chrome extension that adds one-click “copy card info” buttons to t
 - Enjoy the new copy buttons!
 
 
-https://github.com/user-attachments/assets/8b1c65c7-eccd-41d9-aeea-9836da774573
+
+
+https://github.com/user-attachments/assets/a6fbbc87-21fe-48d4-8332-1cc0d5e868cb
+
+
 
 
 
