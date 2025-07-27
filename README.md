@@ -17,6 +17,11 @@ A minimal Chrome extension that adds one-click “copy card info” buttons to t
 - Visit any Cardmarket page and go to your Wants.
 - Enjoy the new copy buttons!
 
+
+https://github.com/user-attachments/assets/8b1c65c7-eccd-41d9-aeea-9836da774573
+
+
+
   ## Why?
 Because sharing lists between users while keeping the exact card (expansion) can be a pain.
 ## Chrome store?
