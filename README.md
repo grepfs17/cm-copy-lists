@@ -1,4 +1,4 @@
-<img width="48" height="48" alt="icon48" src="https://github.com/user-attachments/assets/cb06a3ba-cac1-46ba-a1bc-1862b6d3abcb" /> # Cardmarket Wants Lists Helper
+# <img width="48" height="48" alt="icon48" src="https://github.com/user-attachments/assets/cb06a3ba-cac1-46ba-a1bc-1862b6d3abcb" /> Cardmarket Wants Lists Helper
 
 
 A extension to help with managing Magic: The Gathering wants lists on Cardmarket.
