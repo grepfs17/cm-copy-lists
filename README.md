@@ -11,7 +11,6 @@ A extension to help with managing Magic: The Gathering wants lists on Cardmarket
 | **Copy All** | Adds a button next to the “Add to list” button that copies the entire list in Cardmarket format (`qty cardname (set)`). |
 | **Row‑by‑row copy** | Adds a button to each row that copies that single card’s entry. |
 | **Paste & parse from Scryfall/Archidekt** | On the “Add Decklist” page, a new button reads the clipboard, parses a `[cardname (set)]` list, converts set codes to Cardmarket set names, and pastes the result into the decklist textarea. |
-| **Toast notifications** | Success, error, and info toasts appear at the bottom of the page to confirm actions. |
 
 > ⚠️ The Scryfall/Archidekt parsing feature is experimental and may not work for all list formats.
 
@@ -34,9 +33,9 @@ https://github.com/user-attachments/assets/a6fbbc87-21fe-48d4-8332-1cc0d5e868cb
 
 | Page | What to do | What happens |
 |------|------------|--------------|
-| **Wants list page** | Click **Copy All** to copy the whole list. | The list is copied to your clipboard and a toast confirms the action. |
-| | Click the **copy** icon next to a row to copy that single card. | The card is copied and a toast confirms the action. |
-| **Add Decklist page** | Click **Paste and parse list from Scryfall/Archidekt**. | The extension reads the clipboard, parses lines of the form `qty cardname (set)`, converts set codes to Cardmarket set names, and pastes the result into the textarea. A toast reports how many lines were parsed and if any sets were not found. |
+| **Wants list page** | Click **Copy All** to copy the whole list. | The list is copied to your clipboard. |
+| | Click the **copy** icon next to a row to copy that single card. | The card is copied to your clipboard. |
+| **Add Decklist page** | Click **Paste and parse list from Scryfall/Archidekt**. | The extension reads the clipboard, parses lines of the form `qty cardname (set)`, converts set codes to Cardmarket set names, and pastes the result into the textarea. |
 
 ---
 
