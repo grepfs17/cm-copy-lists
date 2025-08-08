@@ -39,11 +39,6 @@ https://github.com/user-attachments/assets/a6fbbc87-21fe-48d4-8332-1cc0d5e868cb
 
 ---
 
-## 🛠️ Development
-
-- **Manifest**: `manifest.json` (v1.1.0) declares the content scripts `wantsCopyUtils.js` and `wantsAddUtils.js`.  
-- **Parser**: `parser.js` contains a comprehensive `cardmarketToScryfall` mapping that now includes sets up to 2025‑08‑01.   
-
 Feel free to fork, tweak, or extend the mapping for new sets or formats.
 
 ---
