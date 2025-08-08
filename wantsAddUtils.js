@@ -6,9 +6,9 @@
     const h1Div = document.querySelector('h1.H1_PageTitle + div');
     const pasteBtn = document.createElement('button');
     pasteBtn.type = 'button';
-    pasteBtn.innerHTML = '<span class="fonticon-paste"></span> Paste and parse list from Scryfall';
+    pasteBtn.innerHTML = '<span class="fonticon-paste"></span> Paste and parse list from Scryfall / Archidekt';
     pasteBtn.classList = 'icon-copy btn btn-sm btn-outline-info ms-sm-2 mb-3';
-    pasteBtn.title = 'Paste and parse list from Scryfall';
+    pasteBtn.title = 'Paste and parse list from Scryfall / Archidekt format : 2x Lightning Bolt (M21)';
     pasteBtn.style = "transform: translateX(-50%); margin-left: 50% !important;";
     pasteBtn.addEventListener('click', () => {
         navigator.clipboard.readText().then((text) => {
@@ -51,8 +51,8 @@
     h1Div.insertAdjacentElement('afterbegin', pasteBtn);
     const disclaimerText = document.createElement('p');
     disclaimerText.className = 'text-muted small text-center';
-    disclaimerText.textContent = `
-    * This action is added by ${extensionName} and will try to parse the format [cardname (set)] list and convert it to Cardmarket format. 
+    disclaimerText.innerHTML = `
+    * This action is added by ${extensionName} and will try to parse the format <i><strong>[cardname (set)]</strong></i> list and convert it to Cardmarket format. 
     If a set is not found, it will be added as is. 
     The funcionality is experimental and may not work for all lists.
     This is not an official Cardmarket feature and is provided as a convenience.
