@@ -23,12 +23,9 @@ A extension to help with managing Magic: The Gathering wants lists on Cardmarket
 2. Open Chrome → `chrome://extensions/` → **Load unpacked** → select the `cm-copy-lists` folder.  
 3. The extension will automatically inject the copy buttons on any Cardmarket “Wants” page and the paste‑parse button on the “Add Decklist” page.
 
-> **Tip**: If you want to use the extension on a private browsing window, enable “Allow in incognito” in the extension’s details page.
-
 ---
 
 ## 📸 Example
-
 https://github.com/user-attachments/assets/a6fbbc87-21fe-48d4-8332-1cc0d5e868cb
 
 ---
