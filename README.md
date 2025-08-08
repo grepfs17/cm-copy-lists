@@ -1,6 +1,6 @@
 # Cardmarket Wants Lists Helper
 
-> A lightweight Chrome extension that turns Cardmarket’s “Wants” pages into a quick copy‑and‑paste tool for the Cardmarket format, with experimental Scryfall/Archidekt parsing support.
+A extension to help with managing Magic: The Gathering wants lists on Cardmarket.
 
 ---
 
@@ -27,9 +27,9 @@
 
 ---
 
-## 📸 Screenshot
+## 📸 Example
 
-![Cardmarket Wants Lists Helper](https://i.imgur.com/your-screenshot.png)
+https://github.com/user-attachments/assets/a6fbbc87-21fe-48d4-8332-1cc0d5e868cb
 
 ---
 
@@ -46,8 +46,7 @@
 ## 🛠️ Development
 
 - **Manifest**: `manifest.json` (v1.1.0) declares the content scripts `wantsCopyUtils.js` and `wantsAddUtils.js`.  
-- **Parser**: `parser.js` contains a comprehensive `cardmarketToScryfall` mapping that now includes sets up to 2025‑08‑01.  
-- **UI**: `toast.js` provides a lightweight toast system used by both copy and paste actions.  
+- **Parser**: `parser.js` contains a comprehensive `cardmarketToScryfall` mapping that now includes sets up to 2025‑08‑01.   
 
 Feel free to fork, tweak, or extend the mapping for new sets or formats.
 
