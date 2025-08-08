@@ -1,6 +1,7 @@
 (async () => {
     const { scryfallToCardmarket, cardmarketToScryfall } = await import(chrome.runtime.getURL('parser.js'));
     const { showToast } = await import(chrome.runtime.getURL('toast.js'));
+    const extensionName = 'Cardmarket Wants Lists Helper';
 
     const h1Div = document.querySelector('h1.H1_PageTitle + div');
     const pasteBtn = document.createElement('button');
@@ -48,5 +49,14 @@
 
     });
     h1Div.insertAdjacentElement('afterbegin', pasteBtn);
+    const disclaimerText = document.createElement('p');
+    disclaimerText.className = 'text-muted small text-center';
+    disclaimerText.textContent = `
+    * This action is added by ${extensionName} and will try to parse the format [cardname (set)] list and convert it to Cardmarket format. 
+    If a set is not found, it will be added as is. 
+    The funcionality is experimental and may not work for all lists.
+    This is not an official Cardmarket feature and is provided as a convenience.
+    `;
+    h1Div.insertAdjacentElement('afterbegin', disclaimerText);
 
 })();

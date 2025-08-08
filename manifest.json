@@ -1,7 +1,7 @@
 {
-  "name": "CM Copy List",
-  "description": "Copy the list of cards in the current view of Cardmarket to the clipboard.",
-  "version": "1.0",
+  "name": "Cardmarket Wants Lists Helper",
+  "description": "A extension to help with managing Magic: The Gathering wants lists on Cardmarket.",
+  "version": "1.1.0",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
