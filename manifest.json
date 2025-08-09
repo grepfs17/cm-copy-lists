@@ -23,6 +23,9 @@
       "matches": [
         "https://www.cardmarket.com/*/Magic/Wants/*"
       ],
+      "exclude_matches": [
+        "https://www.cardmarket.com/*/Magic/Wants/*/AddDeckList*"
+      ],
       "js": [
         "wantsCopyUtils.js"
       ],

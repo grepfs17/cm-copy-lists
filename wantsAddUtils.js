@@ -59,4 +59,22 @@
     `;
     h1Div.insertAdjacentElement('afterbegin', disclaimerText);
 
+    const inputAltSearch = document.createElement('input');
+    inputAltSearch.id = 'altSearch';
+    inputAltSearch.name = 'altSearch';
+    inputAltSearch.className = 'form-control';
+
+    const inputAltSearchAdd = document.createElement('button');
+    inputAltSearchAdd.id = 'altSearchAdd';
+    inputAltSearchAdd.className = 'btn btn-success';
+    inputAltSearchAdd.innerHTML =`<span class='fonticon-plus'></span> Add Card`;
+
+    const inputGroup = document.createElement('div');
+    inputGroup.className = 'input-group mb-3';
+    inputGroup.appendChild(inputAltSearch);
+    inputGroup.appendChild(inputAltSearchAdd);
+
+    h1Div.insertAdjacentElement('beforeend', inputGroup);
+
+
 })();
