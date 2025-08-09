@@ -30,8 +30,61 @@
         return `${cardAmount} ${cardName} (${expansion})`;
     }
 
+    function listView(view = 'cardsOnList', rows = []) {
+        if (view === 'cardsOnList') {
+            rows.forEach(row => {
+                const imageTd = row.querySelector('td.preview')
+                const currentImage = imageTd.querySelector('span[data-bs-title]').getAttribute('data-bs-title');
+                // Create a template to parse the image HTML
+                const template = document.createElement('template');
+                template.innerHTML = currentImage.trim();
+                const img = template.content.querySelector('img');
+                // set attributes for better performance
+                img.setAttribute('loading', 'lazy');
+                img.classList = 'img-thumbnail my-1';
+                img.style = 'max-width: unset';
+                imageTd.innerHTML = img.outerHTML;
+                template.remove();
+            });
+
+        }
+    }
 
     const rows = document.querySelectorAll('table.tablesorter tbody tr');
+
+    if (rows) {
+        // If we have a table we add the checkbox to change the view display
+        const h2 = document.querySelector('h2')
+        h2.insertAdjacentHTML("beforeend",
+            `
+            <label id='cardsOnListLabel' class='ms-2 btn btn-outline-secondary'>
+              <input type='checkbox' name='cardsOnList' id='cardsOnList'/>
+              View Cards in list 
+            </label>
+            `);
+        document.querySelector('input#cardsOnList').addEventListener('change', (e) => {
+            const input = e.target
+            if (input.checked) {
+                chrome.storage.local.set({ 'cardsOnList': true });
+                input.parentNode.classList.remove('btn-outline-secondary');
+                input.parentNode.classList.add('btn-secondary');
+                listView('cardsOnList', rows);
+            } else {
+                chrome.storage.local.remove(['cardsOnList']);
+                window.location.reload();
+            }
+        })
+
+
+    }
+    const { cardsOnList } = await chrome.storage.local.get(['cardsOnList'])
+    console.log(cardsOnList);
+    if (cardsOnList && cardsOnList === true) {
+        const inputTrigger = document.querySelector('input#cardsOnList');
+        inputTrigger.checked = true;
+        inputTrigger.dispatchEvent(new Event('change'))
+    }
+
 
     console.log('[Cardmarket Copy List] Found', rows.length, 'rows.');
     const addToListBtn = document.querySelector('a[href*="AddDeckList"]');
@@ -85,5 +138,6 @@
                 }
             });
         }
+
     });
 })();
