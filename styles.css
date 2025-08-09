@@ -1,6 +1,26 @@
-#cardsOnListLabel input[type=checkbox] {
+#cardsOnListLabel input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   visibility: hidden;
 }
 
+#autocomplete-list {
+  position: absolute;
+  top: 35px;
+  z-index: 99;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.autocomplete-item {
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-top: none;
+}
+
+.autocomplete-item:hover {
+  background: #f8f9fa;
+}

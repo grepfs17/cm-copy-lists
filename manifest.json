@@ -39,6 +39,9 @@
       ],
       "js": [
         "wantsAddUtils.js"
+      ],
+      "css": [
+        "styles.css"
       ]
     }
   ],
