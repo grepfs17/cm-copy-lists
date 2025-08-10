@@ -118,12 +118,6 @@
     };
   };
 
-  const getUrl = (search_term) => {
-    return `https://api.scryfall.com/cards/autocomplete?q=${encodeURIComponent(
-      search_term
-    )}`;
-  };
-
   const listBox = document.createElement("div");
   listBox.id = "autocomplete-list";
   listBox.className = "list-group";
@@ -131,38 +125,92 @@
   listBox.style.display = "none";
   inputGroup.appendChild(listBox);
 
-  function showSuggestions(val) {
+  async function showSuggestions(val) {
     const term = val.trim().toLowerCase();
     listBox.innerHTML = "";
-
     if (!term) {
       listBox.style.display = "none";
       return;
     }
 
-    fetch(getUrl(term))
-      .then((res) => res.json())
-      .then((json) => {
-        const hits = json.data;
-        if (!hits.length) {
-          listBox.style.display = "none";
-          return;
-        }
+    try {
+      // 1. Autocomplete endpoint (names only)
+      const autoRes = await fetch(
+        `https://api.scryfall.com/cards/autocomplete?q=${encodeURIComponent(
+          term
+        )}`
+      );
+      const autoJson = await autoRes.json();
+      const names = autoJson.data;
+      if (!names?.length) {
+        listBox.style.display = "none";
+        return;
+      }
 
-        hits.forEach((text) => {
-          const div = document.createElement("div");
-          div.className =
-            "autocomplete-item list-group-item list-group-item-action";
-          div.textContent = text;
-          div.addEventListener("click", () => {
-            inputAltSearch.value = text;
-            listBox.style.display = "none";
-          });
-          listBox.appendChild(div);
+      // 2. Fetch the first 8 cards' full objects in parallel
+      const cardPromises = names.slice(0, 8).map(async (name) => {
+        const cardRes = await fetch(
+          `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(
+            name
+          )}`
+        );
+        return cardRes.ok ? cardRes.json() : null;
+      });
+      const cards = (await Promise.all(cardPromises)).filter(Boolean);
+
+      if (!cards.length) {
+        listBox.style.display = "none";
+        return;
+      }
+
+      // 3. Build the miniature “cards”
+      cards.forEach((card) => {
+        //console.log(card);
+        const imgUrl =
+          card.image_uris?.normal || // normal cards
+          card.card_faces?.[0]?.image_uris?.normal; // mdfcs / battles / etc.
+        if (!imgUrl) return; // skip if Scryfall has no image
+
+        const item = document.createElement("div");
+        item.className =
+          "autocomplete-item list-group-item list-group-item-action d-flex align-items-center";
+        item.style.cursor = "pointer";
+        item.style.padding = "4px 8px";
+
+        const img = document.createElement("img");
+        img.src = imgUrl;
+        img.loading = "lazy";
+        img.alt = card.name;
+        img.style.height = "250px";
+        img.style.marginRight = "8px";
+        img.style.borderRadius = "6px";
+
+        const label = document.createElement("span");
+        const priceText =
+          card.prices && card.prices.eur
+            ? ` (<small class='fst-italic'>~${card.prices.eur} €</small>)`
+            : "";
+        const isGameChangerText = card.game_changer
+          ? " <small><i>🔷 Game changer</i></small>"
+          : "";
+        label.innerHTML = `${card.name}${priceText}${isGameChangerText}`;
+        label.style.fontSize = "14px";
+
+        item.append(img, label);
+
+        item.addEventListener("click", () => {
+          inputAltSearch.value = card.name;
+          listBox.style.display = "none";
         });
 
-        listBox.style.display = "block";
+        listBox.appendChild(item);
       });
+
+      listBox.style.display = "block";
+    } catch (e) {
+      console.error(e);
+      listBox.style.display = "none";
+    }
   }
 
   inputAltSearch.addEventListener(
@@ -187,4 +235,71 @@
   });
 
   // END : Paste from Archidekt functionality
+
+  // BEGIN : Hover functionality on Textarea
+  const formWrapper = document.querySelector("div.form-wrapper");
+  formWrapper.style.position = "relative";
+
+  const hoverPlaceholder = document.createElement("div");
+  hoverPlaceholder.id = "hoverPlaceholder";
+  Object.assign(hoverPlaceholder.style, {
+    position: "absolute",
+    top: 0,
+    left: "-225px",
+    width: "215px",
+    height: "auto",
+  });
+
+  formWrapper.insertAdjacentElement("afterbegin", hoverPlaceholder);
+  const ta = document.getElementById("AddDecklist");
+  ta.style.lineHeight = "20px";
+  const lineHeight = parseFloat(getComputedStyle(ta).lineHeight);
+
+  let lastCardName = null; // Last card we asked for
+  let currentController = null; // AbortController for the last fetch
+
+  const debouncedFetchImage = debounce(async (cardName) => {
+    if (!cardName || cardName === lastCardName) return; // Nothing new
+
+    lastCardName = cardName;
+
+    // Cancel any in-flight request
+    if (currentController) currentController.abort();
+    currentController = new AbortController();
+
+    try {
+      const res = await fetch(
+        `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(
+          cardName
+        )}`,
+        { signal: currentController.signal }
+      );
+      if (!res.ok) throw new Error("not found");
+      const card = await res.json();
+
+      const imgUrl =
+        card.image_uris?.normal || card.card_faces?.[0]?.image_uris?.normal;
+      if (!imgUrl) return;
+
+      hoverPlaceholder.innerHTML = `<img src="${imgUrl}" class="w-100 img-thumbnail"/>`;
+    } catch (e) {
+      if (e.name !== "AbortError") console.error(e);
+    } finally {
+      currentController = null;
+    }
+  }, 250);
+
+  ta.addEventListener("mousemove", (e) => {
+    const rect = ta.getBoundingClientRect();
+    const y = e.clientY - rect.top + ta.scrollTop;
+    const lineIndex = Math.floor(y / lineHeight);
+
+    const lines = ta.value.split("\n");
+    if (lineIndex < 0 || lineIndex >= lines.length) return;
+
+    const cardName = lines[lineIndex].replace(/\([^)]*\)/g, "").trim();
+    debouncedFetchImage(cardName);
+  });
+
+  // END : Hover functionality on Textarea
 })();
