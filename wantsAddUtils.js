@@ -148,7 +148,7 @@
       }
 
       // 2. Fetch the first 8 cards' full objects in parallel
-      const cardPromises = names.slice(0, 8).map(async (name) => {
+      const cardPromises = names.slice(0, 4).map(async (name) => {
         const cardRes = await fetch(
           `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(
             name
@@ -252,7 +252,7 @@
 
   formWrapper.insertAdjacentElement("afterbegin", hoverPlaceholder);
   const ta = document.getElementById("AddDecklist");
-  ta.style.lineHeight = "20px";
+  ta.style.lineHeight = "30px";
   const lineHeight = parseFloat(getComputedStyle(ta).lineHeight);
 
   let lastCardName = null; // Last card we asked for
