@@ -10,7 +10,9 @@
 
   const h1Div = document.querySelector("h1.H1_PageTitle + div");
 
-  // BEGIN : Paste from Archidekt functionality
+  /*
+   *BEGIN : Paste from Archidekt utility
+   */
   const pasteBtn = document.createElement("button");
   pasteBtn.type = "button";
   pasteBtn.innerHTML =
@@ -75,9 +77,14 @@
     This is not an official Cardmarket feature and is provided as a convenience.
     `;
   h1Div.insertAdjacentElement("afterbegin", disclaimerText);
-  // END : Paste from Archidekt functionality
 
-  // BEGIN : New Search utility
+  /*
+   * END : Paste from Archidekt utility
+   */
+
+  /*
+   * BEGIN : New Search utility
+   */
 
   const inputAltSearchNum = document.createElement("input");
   inputAltSearchNum.id = "altSearchNum";
@@ -237,9 +244,13 @@
     inputAltSearch.value = "";
   });
 
-  // END : Paste from Archidekt functionality
+  /*
+   * END : New Search utility
+   */
 
-  // BEGIN : Hover functionality on Textarea
+  /*
+   * BEGIN : Hover utility on Textarea
+   */
   const formWrapper = document.querySelector("div.form-wrapper");
   formWrapper.style.position = "relative";
 
@@ -304,5 +315,7 @@
     debouncedFetchImage(cardName);
   });
 
-  // END : Hover functionality on Textarea
+  /*
+   * END : Hover utility on Textarea
+   */
 })();
