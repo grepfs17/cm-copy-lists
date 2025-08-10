@@ -198,7 +198,7 @@
         const label = document.createElement("span");
         const priceText =
           card.prices && card.prices.eur
-            ? ` (<small class='fst-italic'>~${card.prices.eur} €</small>)`
+            ? ` (<small class='fst-italic'>~ ${card.prices.eur} €</small>)`
             : "";
         const isGameChangerText = card.game_changer
           ? " <small><i>🔷 Game changer</i></small>"
@@ -293,9 +293,13 @@
 
       const imgUrl =
         card.image_uris?.normal || card.card_faces?.[0]?.image_uris?.normal;
+      const priceText =
+          card.prices && card.prices.eur
+            ? ` <small class='text-end fw-bold fst-italic d-block'>~ ${card.prices.eur} €</small>`
+            : "";
       if (!imgUrl) return;
 
-      hoverPlaceholder.innerHTML = `<img src="${imgUrl}" class="w-100 img-thumbnail"/>`;
+      hoverPlaceholder.innerHTML = `<img src="${imgUrl}" class="w-100 img-thumbnail"/>${priceText}`;
     } catch (e) {
       if (e.name !== "AbortError") console.error(e);
     } finally {
