@@ -48,8 +48,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "parser.js",
-        "toast.js"
+        "utils/parser.js",
+        "utils/toast.js"
       ],
       "matches": [
         "<all_urls>"

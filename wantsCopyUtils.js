@@ -1,5 +1,5 @@
 (async () => {
-  const { showToast } = await import(chrome.runtime.getURL("toast.js"));
+  const { showToast } = await import(chrome.runtime.getURL("utils/toast.js"));
 
   function copyRowInfo(row) {
     // Card name

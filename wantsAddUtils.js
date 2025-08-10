@@ -1,8 +1,8 @@
 (async () => {
   const { scryfallToCardmarket, cardmarketToScryfall } = await import(
-    chrome.runtime.getURL("parser.js")
+    chrome.runtime.getURL("utils/parser.js")
   );
-  const { showToast } = await import(chrome.runtime.getURL("toast.js"));
+  const { showToast } = await import(chrome.runtime.getURL("utils/toast.js"));
   const extensionName = "Cardmarket Wants Lists Helper";
 
   const h1Div = document.querySelector("h1.H1_PageTitle + div");
