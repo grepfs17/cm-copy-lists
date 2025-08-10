@@ -3,6 +3,9 @@
     chrome.runtime.getURL("utils/parser.js")
   );
   const { showToast } = await import(chrome.runtime.getURL("utils/toast.js"));
+  const { cachedFetch } = await import(
+    chrome.runtime.getURL("utils/cachedFetch.js")
+  );
   const extensionName = "Cardmarket Wants Lists Helper";
 
   const h1Div = document.querySelector("h1.H1_PageTitle + div");
@@ -135,7 +138,7 @@
 
     try {
       // 1. Autocomplete endpoint (names only)
-      const autoRes = await fetch(
+      const autoRes = await cachedFetch(
         `https://api.scryfall.com/cards/autocomplete?q=${encodeURIComponent(
           term
         )}`
@@ -149,7 +152,7 @@
 
       // 2. Fetch the first 8 cards' full objects in parallel
       const cardPromises = names.slice(0, 4).map(async (name) => {
-        const cardRes = await fetch(
+        const cardRes = await cachedFetch(
           `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(
             name
           )}`
@@ -268,7 +271,7 @@
     currentController = new AbortController();
 
     try {
-      const res = await fetch(
+      const res = await cachedFetch(
         `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(
           cardName
         )}`,

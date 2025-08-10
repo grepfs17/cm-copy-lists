@@ -49,7 +49,8 @@
     {
       "resources": [
         "utils/parser.js",
-        "utils/toast.js"
+        "utils/toast.js",
+        "utils/cachedFetch.js"
       ],
       "matches": [
         "<all_urls>"
