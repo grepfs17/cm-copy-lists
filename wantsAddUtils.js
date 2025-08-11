@@ -26,7 +26,7 @@
     '<span class="fonticon-paste"></span> Paste and parse list from Archidekt / Moxfield';
   pasteBtn.classList = "icon-copy btn btn-sm btn-outline-info ms-sm-2 mb-3";
   pasteBtn.title =
-    "Paste and parse list from Scryfall / Archidekt format : 2x Lightning Bolt (M21)";
+    "Paste and parse list from Archidekt /Moxfield format : 2x Lightning Bolt (M21)";
   pasteBtn.style = "transform: translateX(-50%); margin-left: 50% !important;";
   pasteBtn.addEventListener("click", () => {
     navigator.clipboard.readText().then((text) => {
@@ -79,10 +79,9 @@
   const disclaimerText = document.createElement("p");
   disclaimerText.className = "text-muted small text-center";
   disclaimerText.innerHTML = `
-    * This action is added by ${extensionName} and will try to parse the format <i><strong>[cardname (set)]</strong></i> list and convert it to Cardmarket format. 
+    * This action is added by ${extensionName} and will try to parse the format <strong><pre class='d-inline text-info'>[ num_cards cardname (set) *]</pre></strong> list and convert it to Cardmarket format. 
     If a set is not found, it will be added as is. 
-    The funcionality is experimental and may not work for all lists.
-    This is not an official Cardmarket feature and is provided as a convenience.
+    The feature  is experimental, uses the Scryfall set code format and will not include alternative versions of the cards.
     `;
   h1Div.insertAdjacentElement("afterbegin", disclaimerText);
 
