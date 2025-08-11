@@ -79,7 +79,7 @@
   const disclaimerText = document.createElement("p");
   disclaimerText.className = "text-muted small text-center";
   disclaimerText.innerHTML = `
-    * This action is added by ${extensionName} and will try to parse the format <strong><pre class='d-inline text-info'>[ num_cards cardname (set) *]</pre></strong> list and convert it to Cardmarket format. 
+    * This action is added by ${extensionName} and will try to parse the format <strong><pre class='d-inline text-info'>[ qty cardname (set) *]</pre></strong> list and convert it to Cardmarket format. 
     If a set is not found, it will be added as is. 
     The feature  is experimental, uses the Scryfall set code format and will not include alternative versions of the cards.
     `;
