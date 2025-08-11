@@ -13,10 +13,17 @@
   /*
    *BEGIN : Paste from Archidekt utility
    */
+  function cleanLine(line) {
+    // 1. find the last ')'
+    const closeIndex = line.lastIndexOf(")");
+    if (closeIndex === -1) return line.trim();
+    // 2. cut right after the ')'
+    return line.slice(0, closeIndex + 1).trim();
+  }
   const pasteBtn = document.createElement("button");
   pasteBtn.type = "button";
   pasteBtn.innerHTML =
-    '<span class="fonticon-paste"></span> Paste and parse list from Scryfall / Archidekt';
+    '<span class="fonticon-paste"></span> Paste and parse list from Archidekt / Moxfield';
   pasteBtn.classList = "icon-copy btn btn-sm btn-outline-info ms-sm-2 mb-3";
   pasteBtn.title =
     "Paste and parse list from Scryfall / Archidekt format : 2x Lightning Bolt (M21)";
@@ -29,12 +36,13 @@
         let linesWithErrors = [];
         let notParsedSets = [];
         lines.forEach((line) => {
+          line = cleanLine(line);
           const matches = line
             .trim()
             .match(/^(?<qty>\d+)x?\s+(?<name>.+?)\s*\((?<set>\w+)\)\s*$/i);
           if (matches && matches.groups) {
             const { qty, name, set } = matches.groups;
-            const cmSet = scryfallToCardmarket[set];
+            const cmSet = scryfallToCardmarket[set.toLowerCase()];
             if (!cmSet) {
               notParsedSets.push(set);
             }
@@ -294,9 +302,9 @@
       const imgUrl =
         card.image_uris?.normal || card.card_faces?.[0]?.image_uris?.normal;
       const priceText =
-          card.prices && card.prices.eur
-            ? ` <small class='text-end fw-bold fst-italic d-block'>~ ${card.prices.eur} €</small>`
-            : "";
+        card.prices && card.prices.eur
+          ? ` <small class='text-end fw-bold fst-italic d-block'>~ ${card.prices.eur} €</small>`
+          : "";
       if (!imgUrl) return;
 
       hoverPlaceholder.innerHTML = `<img src="${imgUrl}" class="w-100 img-thumbnail"/>${priceText}`;
