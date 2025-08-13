@@ -1,9 +1,10 @@
-# <img width="48" height="48" alt="icon48" src="https://github.com/user-attachments/assets/cb06a3ba-cac1-46ba-a1bc-1862b6d3abcb" /> Cardmarket Wants Lists Helper
+<p align="center">
+<img width="440" height="280" alt="Sin título-3" src="https://github.com/user-attachments/assets/74022017-3c9d-42ce-875a-6392a4f13a70" />
 
-
-A extension to help with managing Magic: The Gathering wants lists on Cardmarket.
-
----
+</p>
+<p align="center">
+ A extension to help with managing Magic: The Gathering wants lists on Cardmarket.
+</p>
 
 ## 📦 Features
 
@@ -29,8 +30,11 @@ A extension to help with managing Magic: The Gathering wants lists on Cardmarket
 
 ---
 
-## 📸 Example
-https://github.com/user-attachments/assets/a6fbbc87-21fe-48d4-8332-1cc0d5e868cb
+## 📸 Examples
+<img width="1280" height="800" alt="copy-features" src="https://github.com/user-attachments/assets/d055a01e-d692-46f2-b196-af3428d374ec" />
+<img width="1280" height="800" alt="addList-features" src="https://github.com/user-attachments/assets/f987177a-4670-4c13-9c31-f23103e88451" />
+
+
 
 
 ---
