@@ -10,7 +10,7 @@
 
 ## 📦 Features
 
-| Feature           | One-liner                                                                     |
+| Feature           | Description                                                                   |
 | ----------------- | ----------------------------------------------------------------------------- |
 | **Copy All**      | Bulk-copy the entire list in `qty cardname (set)` format.                     |
 | **Row Copy**      | Click the icon beside any card to copy that line only.                        |
