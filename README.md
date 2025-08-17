@@ -30,7 +30,7 @@
 2. Open Chrome → `chrome://extensions/` → **Load unpacked** → select the `cm-copy-lists` folder.  
 3. The extension will automatically inject the copy buttons on any Cardmarket “Wants” page and the paste‑parse button on the “Add Decklist” page.
    
-## Now available on the [Chrome Web store](https://chromewebstore.google.com/detail/cardmarket-wants-lists-he/kmpgkjagalhgeoaafjabmehbadcabham) !
+## 🛍️ Now available on the [Chrome Web store](https://chromewebstore.google.com/detail/cardmarket-wants-lists-he/kmpgkjagalhgeoaafjabmehbadcabham) !
 
 ---
 
