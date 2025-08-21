@@ -37,6 +37,8 @@
 ## 📸 Examples
 <img width="1280" height="800" alt="copy-features" src="https://github.com/user-attachments/assets/d055a01e-d692-46f2-b196-af3428d374ec" />
 <img width="1280" height="800" alt="addList-features" src="https://github.com/user-attachments/assets/f987177a-4670-4c13-9c31-f23103e88451" />
+<img width="1280" height="800" alt="New Project" src="https://github.com/user-attachments/assets/f2212e3d-f040-4c02-b12d-9619fcd31b11" />
+
 
 
 ---
