@@ -1,7 +1,10 @@
 (async () => {
   const { showToast } = await import(chrome.runtime.getURL("utils/toast.js"));
+  const { scryfallToCardmarket, cardmarketToScryfall } = await import(
+    chrome.runtime.getURL("utils/parser.js")
+  );
 
-  function copyRowInfo(row) {
+  function copyRowInfo(row, setToScryfallFormat = false) {
     // Card name
     const nameTd = row.querySelector("td.name.min-size.text-start.p-2 a");
     if (!nameTd) return;
@@ -24,11 +27,36 @@
           tooltipSpan.getAttribute("aria-label") ||
           tooltipSpan.getAttribute("data-bs-original-title") ||
           "";
+        expansion = expansion.trim();
+        expansion = setToScryfallFormat
+          ? cardmarketToScryfall[expansion]
+          : expansion;
       } else {
         expansion = expansionTd.textContent.trim() || "";
       }
     }
-    return `${cardAmount} ${cardName} (${expansion})`;
+    expansion = expansion != "Any" ? ` (${expansion})` : "";
+    return `${cardAmount} ${cardName}${expansion}`;
+  }
+  function copyCards(setToScryfallFormat = false) {
+    const lines = [];
+    rows.forEach((row) => {
+      lines.push(copyRowInfo(row, setToScryfallFormat));
+    });
+    if (lines.length > 0) {
+      const cardsInfo = lines.join("\n");
+      navigator.clipboard
+        .writeText(cardsInfo)
+        .then(() => {
+          console.log("[Cardmarket Copy List] Copied:", cardsInfo);
+          showToast("Copied " + lines.length + " lines to clipboard!");
+        })
+        .catch((err) => {
+          console.error("[Cardmarket Copy List] Could not copy:", err);
+        });
+    } else {
+      console.warn("[Cardmarket Copy List] No card info found for this row.");
+    }
   }
 
   function listView(view = "cardsOnList", rows = []) {
@@ -82,7 +110,6 @@
       });
   }
   const { cardsOnList } = await chrome.storage.local.get(["cardsOnList"]);
-  console.log(cardsOnList);
   if (cardsOnList && cardsOnList === true) {
     const inputTrigger = document.querySelector("input#cardsOnList");
     inputTrigger.checked = true;
@@ -90,32 +117,42 @@
   }
 
   console.log("[Cardmarket Copy List] Found", rows.length, "rows.");
-  const addToListBtn = document.querySelector('a[href*="AddDeckList"]');
+  const copyAllGroup = document.createElement("div");
+  copyAllGroup.classList = "btn-group";
+  const copyAllDropdown = document.createElement("button");
+  Object.assign(copyAllDropdown, {
+    id: "copyAllDropdown",
+    type: "button",
+    ariaExpanded: "false",
+  });
+  copyAllDropdown.classList = "btn btn-outline-info dropdown-toggle";
+  copyAllDropdown.dataset.bsToggle = "dropdown";
+
   const copyAllBtn = document.createElement("button");
   copyAllBtn.type = "button";
   copyAllBtn.innerHTML = '<span class="fonticon-copy"></span> Copy All';
   copyAllBtn.classList = "icon-copy btn btn-outline-info ms-3";
   copyAllBtn.title = "Copy all cards in the current view to clipboard";
-  addToListBtn.parentNode.insertBefore(copyAllBtn, addToListBtn.nextSibling);
+
   copyAllBtn.addEventListener("click", () => {
-    const lines = [];
-    rows.forEach((row) => {
-      lines.push(copyRowInfo(row));
-    });
-    if (lines.length > 0) {
-      const cardsInfo = lines.join("\n");
-      navigator.clipboard
-        .writeText(cardsInfo)
-        .then(() => {
-          console.log("[Cardmarket Copy List] Copied:", cardsInfo);
-          showToast("Copied " + lines.length + " lines to clipboard!");
-        })
-        .catch((err) => {
-          console.error("[Cardmarket Copy List] Could not copy:", err);
-        });
-    } else {
-      console.warn("[Cardmarket Copy List] No card info found for this row.");
-    }
+    copyCards();
+  });
+  copyAllGroup.append(copyAllBtn);
+  copyAllGroup.append(copyAllDropdown);
+  const menu = document.createElement("ul");
+  menu.className = "dropdown-menu p-0";
+  menu.setAttribute("aria-labelledby", "copyAllDropdown");
+  const item = document.createElement("li");
+  item.innerHTML =
+    '<a id="copyAllFormated" class="dropdown-item" href="#"><span class="fonticon-copy"></span> Copy for Archidekt / Moxfield</a>';
+  menu.appendChild(item);
+  copyAllGroup.append(copyAllBtn, copyAllDropdown, menu);
+  const addToListBtn = document.querySelector('a[href*="AddDeckList"]');
+  addToListBtn.parentNode.insertBefore(copyAllGroup, addToListBtn.nextSibling);
+
+  document.querySelector("#copyAllFormated").addEventListener("click", (e) => {
+    e.preventDefault();
+    copyCards((setToScryfallFormat = true));
   });
 
   rows.forEach((row) => {

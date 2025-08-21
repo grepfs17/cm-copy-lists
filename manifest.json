@@ -1,7 +1,7 @@
 {
   "name": "Cardmarket Wants Lists Helper",
   "description": "A extension to help with managing Magic: The Gathering wants lists on Cardmarket.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "manifest_version": 3,
   "permissions": [
     "clipboardWrite",
