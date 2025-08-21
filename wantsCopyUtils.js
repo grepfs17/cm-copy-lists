@@ -8,7 +8,10 @@
     // Card name
     const nameTd = row.querySelector("td.name.min-size.text-start.p-2 a");
     if (!nameTd) return;
-    const cardName = nameTd.textContent.trim();
+    let cardName = nameTd.textContent.trim();
+    // if we are formating for archidekt / moxfield we need to remove the versions from the card
+    cardName = setToScryfallFormat ? cardName.replace(/\s*\([^)]*\)/g, '').trim() : cardName;
+
 
     // Amount
     const amountTd = row.querySelector("td.amount");
@@ -35,7 +38,7 @@
         expansion = expansionTd.textContent.trim() || "";
       }
     }
-    expansion = expansion != "Any" ? ` (${expansion})` : "";
+    expansion = expansion && expansion != "Any" ? ` (${expansion})` : "";
     return `${cardAmount} ${cardName}${expansion}`;
   }
   function copyCards(setToScryfallFormat = false) {
