@@ -10,8 +10,9 @@
     if (!nameTd) return;
     let cardName = nameTd.textContent.trim();
     // if we are formating for archidekt / moxfield we need to remove the versions from the card
-    cardName = setToScryfallFormat ? cardName.replace(/\s*\([^)]*\)/g, '').trim() : cardName;
-
+    cardName = setToScryfallFormat
+      ? cardName.replace(/\s*\([^)]*\)/g, "").trim()
+      : cardName;
 
     // Amount
     const amountTd = row.querySelector("td.amount");
