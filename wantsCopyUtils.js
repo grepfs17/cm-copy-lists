@@ -147,8 +147,11 @@
   menu.className = "dropdown-menu p-0";
   menu.setAttribute("aria-labelledby", "copyAllDropdown");
   const item = document.createElement("li");
-  item.innerHTML =
-    '<a id="copyAllFormated" class="dropdown-item" href="#"><span class="fonticon-copy"></span> Copy for Archidekt / Moxfield</a>';
+  let infoText =
+    "This feature tries to get the cards keeping the set in a way Archidekt / Moxfield can understand";
+  item.innerHTML = `<a id="copyAllFormated" class="dropdown-item" href="#">
+    <span class="fonticon-copy"></span> Copy for Archidekt / Moxfield <span class="fonticon-info small" title="${infoText}"></span>
+    </a>`;
   menu.appendChild(item);
   copyAllGroup.append(copyAllBtn, copyAllDropdown, menu);
   const addToListBtn = document.querySelector('a[href*="AddDeckList"]');
