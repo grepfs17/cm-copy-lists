@@ -93,7 +93,7 @@
       h2.insertAdjacentHTML(
         "beforeend",
         `
-            <label id='cardsOnListLabel' class='ms-2 btn btn-outline-secondary'>
+            <label id='cardsOnListLabel' class='ms-3 small'>
               <input type='checkbox' name='cardsOnList' id='cardsOnList'/>
               View Cards in list 
             </label>
@@ -107,8 +107,6 @@
         const input = e.target;
         if (input.checked) {
           chrome.storage.local.set({ cardsOnList: true });
-          input.parentNode.classList.remove("btn-outline-secondary");
-          input.parentNode.classList.add("btn-secondary");
           listView("cardsOnList", rows);
         } else {
           chrome.storage.local.remove(["cardsOnList"]);
