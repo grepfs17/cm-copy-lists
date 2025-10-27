@@ -89,15 +89,18 @@
   if (rows) {
     // If we have a table we add the checkbox to change the view display
     const h2 = document.querySelector("h2");
-    h2.insertAdjacentHTML(
-      "beforeend",
-      `
+    if (document.querySelector("#WantsListTable")) {
+      h2.insertAdjacentHTML(
+        "beforeend",
+        `
             <label id='cardsOnListLabel' class='ms-2 btn btn-outline-secondary'>
               <input type='checkbox' name='cardsOnList' id='cardsOnList'/>
               View Cards in list 
             </label>
             `
-    );
+      );
+    }
+
     document
       .querySelector("input#cardsOnList")
       .addEventListener("change", (e) => {
