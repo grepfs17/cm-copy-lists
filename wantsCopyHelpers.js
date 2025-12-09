@@ -74,10 +74,9 @@
         const template = document.createElement("template");
         template.innerHTML = currentImage.trim();
         const img = template.content.querySelector("img");
-        // set attributes for better performance
         img.setAttribute("loading", "lazy");
         img.classList = "img-thumbnail my-1";
-        img.style = "max-width: unset";
+        img.style = "max-width: unset;width:260px;border-radius:8px;";
         imageTd.innerHTML = img.outerHTML;
         template.remove();
       });
