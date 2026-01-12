@@ -1,5 +1,5 @@
 /*  CARDMARKET ➜ SCRYFALL 
-    Last update: 2025-08-12
+    Last update: 12/01/2026
     Sources: Gatherer, Scryfall API, WotC announcements
     Any line ending in “: null” means Scryfall has no distinct code.
     Generated with the help of AI: Kimi K2 (I'm not gonna do this shit all by myself so maybe some things are wrong)
