@@ -403,6 +403,10 @@ const cardmarketToScryfall = {
     "Avatar: The Last Airbender: Commander": "tac",
     "Avatar: The Last Airbender: Extras": null,
 
+    /* ===== Lorwyn Eclipsed (2026-01-12) ===== */
+    "Lorwyn Eclipsed": "ecl",
+    "Commander: Lorwyn Eclipsed": "ecc",
+
     /* ===== UNIVERSAL CROSSOVER UB SETS ===== */
     "Universes Beyond: Doctor Who": "who",
     "Universes Beyond: Doctor Who: Extras": null,
