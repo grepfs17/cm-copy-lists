@@ -29,6 +29,9 @@
   "popup_pages": [
     "how-it-works.html"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": [

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>What's new</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      html, body { height: 100%; }
+      body { display:flex; align-items:center; justify-content:center; margin:0; background-color:var(--cm-bg); color:var(--cm-text); }
+      .container { width:600px; padding:24px; }
+      h1 { color:var(--cm-h1); margin:0 0 12px 0; display:flex; align-items:center; gap:12px; }
+      h1 img { width:40px; height:40px; object-fit:contain; background:#ffffff; border-radius:8px; padding:6px; }
+      .cm-section { background:var(--cm-surface); padding:12px; border-radius:8px; margin-bottom:12px; }
+      a.link { color:var(--cm-link); text-decoration:none; }
+      .actions { margin-top:16px; }
+      .btn { display:inline-block; padding:8px 12px; border-radius:6px; background:var(--cm-link); color:#0b1220; text-decoration:none; margin-right:8px; }
+      .close { background:transparent; color:var(--cm-text); border:1px solid rgba(255,255,255,0.06); }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1><img src="icon128.png" alt="logo">What's new in this update</h1>
+
+      <div class="section">
+      <h2 style="margin-top:0;color:var(--cm-h1);font-size:16px;">New settings popup</h2>
+      <p class="muted">A popup is available from the extension icon where you can enable or disable features.</p>
+    </div>
+
+    <div class="section">
+      <h2 style="margin-top:0;color:var(--cm-h1);font-size:16px;">Auto-login (optional)</h2>
+      <p class="muted">Auto-login can be toggled from the popup. Credentials are stored encrypted in your browser and decrypted only by the extension when needed.</p>
+    </div>
+
+    <div class="section">
+      <h2 style="margin-top:0;color:var(--cm-h1);font-size:16px;">How it works</h2>
+      <p class="muted">Read the technical explanation on the "How it works" page.</p>
+      <p><a class="link" href="how-it-works.html">Open How it works</a></p>
+    </div>
+
+    <div class="section">
+      <h2 style="margin-top:0;color:var(--cm-h1);font-size:16px;">Visual updates</h2>
+      <p class="muted">Popup and info pages now use a dark palette matching Cardmarket styling.</p>
+    </div>
+
+      <div class="actions">
+        <a class="btn" href="popup.html">Open settings</a>
+        <a class="btn close" id="closeBtn">Close</a>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('closeBtn').addEventListener('click', () => window.close());
+    </script>
+  </body>
+</html>
