@@ -1,4 +1,5 @@
 (async () => {
+  // BEGIN: View cards on list in user offers
   function listView(view = "cardsOnList", rows = []) {
     if (view === "cardsOnList") {
       rows.forEach((row) => {
@@ -54,4 +55,7 @@
     const rows = document.querySelectorAll("#UserOffersTable .article-row");
     listView("cardsOnList", rows);
   }
+  // END: View cards on list in user offers
+
+  
 })();
