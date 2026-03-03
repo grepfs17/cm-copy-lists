@@ -3,7 +3,7 @@
     chrome.runtime.getURL("utils/encrypt.js")
   );
   const loginReminder = await chrome.storage.local.get("loginReminder");
-  if (!loginReminder) {
+  if (loginReminder === false) {
     return null;
   }
 
