@@ -169,7 +169,7 @@
       const copyIcon = document.createElement("button");
       copyIcon.type = "button";
       copyIcon.innerHTML = '<span class="fonticon-copy"></span>';
-      copyIcon.classList = "icon-copy btn btn-sm btn-outline-info ms-sm-2";
+      copyIcon.classList = "icon-copy btn btn-sm btn-outline-info";
       copyIcon.title = "Copy card info to clipboard";
       trashIcon.parentNode.insertBefore(copyIcon, trashIcon.nextSibling);
       copyIcon.addEventListener("click", () => {
