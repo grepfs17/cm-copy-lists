@@ -4,8 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How It Works - Cardmarket Wants Lists Helper</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
+      :root {
+        --cm-bg: #1d1f26; /* background */
+        --cm-h1: #e4e6eb; /* h1/title */
+        --cm-link: #7ba1f6; /* links */
+        --cm-surface: #252931;
+        --cm-text: #e6f6ef;
+        --cm-muted: #9aa6a0;
+        --cm-accent: #f3b431;
+      }
       body {
         width: 400px;
         padding: 24px;
@@ -84,6 +92,25 @@
     <p class="subtitle">Understanding how your data is protected</p>
 
     <div class="section">
+      <h2>⚠️ Important Notes</h2>
+      <p>
+        This extension uses client-side encryption. Your credentials are never
+        sent to any server. The encryption key is stored in your browser's
+        secure storage and is only accessible to this extension.
+      </p>
+      <p>
+        If you want to look at the actual implementation, you can check the
+        source code on
+        <a
+          class="link"
+          href="https://github.com/grepfs17/cm-copy-lists"
+          target="_blank"
+          >GitHub</a
+        >.
+      </p>
+    </div>
+
+    <div class="section">
       <h2>Secure Encryption</h2>
       <p>
         Your Cardmarket credentials are encrypted using AES-256 encryption
@@ -155,19 +182,6 @@
           local storage
         </li>
       </ul>
-    </div>
-
-    <div class="section">
-      <h2>⚠️ Important Notes</h2>
-      <p>
-        This extension uses client-side encryption. Your credentials are never
-        sent to any server. The encryption key is stored in your browser's
-        secure storage and is only accessible to this extension.
-      </p>
-      <p>
-        If you want to look at the actual implementation, you can check the source code on
-        <a class="link" href="https://github.com/grepfs17/cm-copy-lists" target="_blank" >GitHub</a>.
-      </p>
     </div>
 
     <a class="back-link" id="backLink">← Back to Settings</a>
