@@ -407,6 +407,10 @@ const cardmarketToScryfall = {
     "Lorwyn Eclipsed": "ecl",
     "Commander: Lorwyn Eclipsed": "ecc",
 
+    /* ===== TEENAGE MUTANT NINJA TURTLES (2026-03-06) ===== */
+    "Teenage Mutant Ninja Turtles": "tmt",
+    "Commander: Teenage Mutant Ninja Turtles": "tmc",
+
     /* ===== UNIVERSAL CROSSOVER UB SETS ===== */
     "Universes Beyond: Doctor Who": "who",
     "Universes Beyond: Doctor Who: Extras": null,
