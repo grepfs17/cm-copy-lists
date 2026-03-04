@@ -24,7 +24,7 @@
   pasteBtn.type = "button";
   pasteBtn.innerHTML =
     '<span class="fonticon-paste"></span> Paste and parse list from Archidekt / Moxfield';
-  pasteBtn.classList = "icon-copy btn btn-sm btn-outline-info ms-sm-1 mb-3";
+  pasteBtn.classList = "icon-copy btn btn-sm btn-outline-info ms-sm-2 mb-3";
   pasteBtn.title =
     "Paste and parse list from Archidekt /Moxfield format : 2x Lightning Bolt (M21)";
   pasteBtn.style = "transform: translateX(-50%); margin-left: 50% !important;";
