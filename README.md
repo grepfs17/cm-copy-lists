@@ -18,7 +18,7 @@
 | **Smart Add**     | Inline search with live card images & prices while typing.                    |
 | **Hover Preview** | Card image + price pops up as you move inside the decklist textarea.          |
 | **Toggle View**   | Switch between text rows and inline card images. (Now on users pages too!)    |
-
+| **Auto-login**    | Popup toggle to enable/disable secure auto-login (default: disabled).         |
 
 > ⚠️ The Paste from Archidekt / Moxfield feature is experimental and may not work for all list formats.
 

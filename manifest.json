@@ -1,7 +1,7 @@
 {
   "name": "Cardmarket Wants Lists Helper",
   "description": "A extension to help with managing Magic: The Gathering wants lists on Cardmarket.",
-  "version": "1.2.4",
+  "version": "1.3.0",
   "manifest_version": 3,
   "permissions": [
     "clipboardWrite",
@@ -17,6 +17,21 @@
   "host_permissions": [
     "https://www.cardmarket.com/*"
   ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "iconI16.png",
+      "32": "iconI32.png",
+      "48": "iconI48.png",
+      "128": "iconI128.png"
+    }
+  },
+  "popup_pages": [
+    "how-it-works.html"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -24,6 +39,14 @@
       ],
       "js": [
         "usersHelpers.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.cardmarket.com/*/Magic/*"
+      ],
+      "js": [
+        "loginReminder.js"
       ]
     },
     {
@@ -55,6 +78,7 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "utils/encrypt.js",
         "utils/parser.js",
         "utils/toast.js",
         "utils/cachedFetch.js"

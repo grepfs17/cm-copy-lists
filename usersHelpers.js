@@ -1,4 +1,5 @@
 (async () => {
+  // BEGIN: View cards on list in user offers
   function listView(view = "cardsOnList", rows = []) {
     if (view === "cardsOnList") {
       rows.forEach((row) => {
@@ -20,38 +21,28 @@
       });
     }
   }
-  const sortSelect = document.querySelector("#sortBy");
-  const sortSelectParent = sortSelect.parentElement;
-  const checkboxView = document.createElement("input");
-  checkboxView.type = "checkbox";
-  checkboxView.name = "cardsOnList";
-  checkboxView.id = "cardsOnList";
 
-  const labelView = document.createElement("label");
-  labelView.htmlFor = "cardsOnList";
-  labelView.classList = "";
-  labelView.innerText = " View Cards in list ";
-  labelView.prepend(checkboxView);
-  const labelViewContainer = document.createElement("div");
-  labelViewContainer.classList = "col col-lg-3 ms-3";
-  labelViewContainer.innerHTML = labelView.outerHTML;
-  sortSelectParent.after(labelViewContainer);
-
-  document.querySelector("#cardsOnList").addEventListener("change", (e) => {
-    const rows = document.querySelectorAll("#UserOffersTable .article-row");
-    if (e.target.checked) {
-      listView("cardsOnList", rows);
-      localStorage.setItem("usersCardsOnList", "true");
-    } else {
-      // reload the page to reset the view
-      localStorage.removeItem("usersCardsOnList");
-      location.reload();
-    }
-  });
-  const usersCardsOnList = localStorage.getItem("usersCardsOnList");
-  if (usersCardsOnList && usersCardsOnList === "true") {
-    document.querySelector("#cardsOnList").checked = true;
+  const { cardsOnList } = await chrome.storage.local.get(["cardsOnList"]);
+  if (cardsOnList && cardsOnList === true) {
     const rows = document.querySelectorAll("#UserOffersTable .article-row");
     listView("cardsOnList", rows);
   }
+
+  // Keep the in-page checkbox synced when storage changes elsewhere
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area !== 'local') return;
+    if (changes.cardsOnList !== undefined) {
+      const newVal = !!changes.cardsOnList.newValue;
+      if (newVal === true) {
+        const rows = document.querySelectorAll("#UserOffersTable .article-row");
+        listView("cardsOnList", rows);
+      } else {
+        window.location.reload();
+
+      }
+    }
+  });
+  // END: View cards on list in user offers
+
+
 })();

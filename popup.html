@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cardmarket Wants Lists Helper</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        width: 300px;
+        padding: 16px;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        background-color: var(--cm-bg);
+      }
+      h1 {
+        font-size: 16px;
+        margin: 0 0 16px 0;
+        color: var(--cm-h1);
+      }
+      .toggle-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--cm-surface);
+        padding: 12px;
+        border-radius: 8px;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+      }
+      .toggle-label {
+        font-size: 14px;
+        color: var(--cm-text);
+      }
+      .toggle-label-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .info-icon {
+        color: var(--cm-muted);
+        cursor: help;
+        transition: color 0.2s;
+      }
+      .info-icon:hover {
+        color: var(--cm-accent);
+      }
+      .toggle-switch {
+        position: relative;
+        width: 44px;
+        height: 24px;
+      }
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #202428;
+        transition: 0.3s;
+        border-radius: 24px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.3s;
+        border-radius: 50%;
+      }
+      input:checked + .slider {
+        background-color: var(--cm-accent);
+      }
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+      .status {
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--cm-muted);
+        text-align: center;
+      }
+      .muted-text {
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--cm-muted);
+      }
+      .how-it-works-link {
+        display: block;
+        margin-top: 16px;
+        text-align: center;
+        color: var(--cm-link);
+        text-decoration: none;
+        font-size: 12px;
+      }
+      .how-it-works-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cardmarket Wants Lists Helper</h1>
+
+    <div class="toggle-container">
+      <div class="toggle-label-container">
+        <span class="toggle-label">Auto-login</span>
+        <div
+          class="info-icon"
+          id="infoIcon"
+          title="Automatically fills in your Cardmarket username and password when you visit the login page"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="loginToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="status" id="status">Auto-login: Enabled</div>
+
+    <a
+      href="how-it-works.html"
+      class="how-it-works-link"
+      id="howItWorksLink"
+      title="Learn how your data is protected"
+    >
+      How the auto-login works?
+    </a>
+
+    <div style="height: 12px"></div>
+
+    <div class="toggle-container">
+      <div class="toggle-label-container">
+        <span class="toggle-label">View cards in list</span>
+        <div
+          class="info-icon"
+          title="Toggle between card images and a compact text list view (this affects 'Wants lists' and 'Users Offers lists')"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="cardsOnListToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="status" id="cardsOnListStatus">List view: Disabled</div>
+    <span class="muted-text" style="margin-top: 15px; display: inline-block"
+      >* It is recommended to use the Cardmarket page in English for the best
+      experience with this extension.</span
+    >
+
+    <script src="popup.js"></script>
+  </body>
+</html>

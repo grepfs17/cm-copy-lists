@@ -19,3 +19,25 @@
 .autocomplete-item:hover {
   background: #f8f9fa;
 }
+
+/* Shared theme variables and utilities for extension pages */
+:root{
+  --cm-bg: #1d1f26;
+  --cm-h1: #e4e6eb;
+  --cm-link: #7ba1f6;
+  --cm-surface: #252931;
+  --cm-text: #e6f6ef;
+  --cm-muted: #9aa6a0;
+  --cm-accent: #f3b431;
+  --cm-primary: var(--cm-h1);
+}
+
+.cm-container{ width: 600px; padding: 24px; }
+.cm-section{ background: var(--cm-surface); padding:16px; border-radius:8px; margin-bottom:12px; }
+.section{ background: var(--cm-surface); padding:16px; border-radius:8px; margin-bottom:12px; }
+.cm-btn{ display:inline-block; padding:8px 12px; border-radius:6px; background:var(--cm-link); color:#0b1220; text-decoration:none; margin-right:8px; }
+.btn{ display:inline-block; padding:8px 12px; border-radius:6px; background:var(--cm-link); color:#0b1220; text-decoration:none; margin-right:8px; }
+.cm-link{ color:var(--cm-link); text-decoration:none; }
+.link{ color:var(--cm-link); text-decoration:none; }
+.cm-muted{ color:var(--cm-muted); }
+.cm-code{ background:#1f2429; padding:12px; border-radius:6px; font-family: "Courier New", monospace; font-size:12px; overflow-x:auto; color:var(--cm-text); }

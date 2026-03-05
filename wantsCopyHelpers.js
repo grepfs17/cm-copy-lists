@@ -120,6 +120,21 @@
     inputTrigger.dispatchEvent(new Event("change"));
   }
 
+  // Listen for storage changes to keep the in-page checkbox synced
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area !== 'local') return;
+    if (changes.cardsOnList !== undefined) {
+      const newVal = !!changes.cardsOnList.newValue;
+      const input = document.querySelector("input#cardsOnList");
+      if (!input) return;
+      // Only take action if the value actually differs
+      if (input.checked !== newVal) {
+        input.checked = newVal;
+        input.dispatchEvent(new Event('change'));
+      }
+    }
+  });
+
   console.log("[Cardmarket Copy List] Found", rows.length, "rows.");
   const copyAllGroup = document.createElement("div");
   copyAllGroup.classList = "btn-group";
@@ -135,7 +150,7 @@
   const copyAllBtn = document.createElement("button");
   copyAllBtn.type = "button";
   copyAllBtn.innerHTML = '<span class="fonticon-copy"></span> Copy All';
-  copyAllBtn.classList = "icon-copy btn btn-outline-info ms-3";
+  copyAllBtn.classList = "icon-copy btn btn-outline-info ms-3 me-0";
   copyAllBtn.title = "Copy all cards in the current view to clipboard";
 
   copyAllBtn.addEventListener("click", () => {
@@ -161,6 +176,13 @@
     e.preventDefault();
     copyCards((setToScryfallFormat = true));
   });
+  
+  // adjust the delete form layout to make room for the new copy button
+  const deleteForm = document.querySelector("form[action$='WantsList_DeleteWant']");
+  if (deleteForm) {
+    deleteForm.classList.remove("d-sm-block");
+    deleteForm.classList.add("d-sm-flex");
+  }
 
   rows.forEach((row) => {
     //search for trash icon and add a copy icon after
@@ -169,7 +191,7 @@
       const copyIcon = document.createElement("button");
       copyIcon.type = "button";
       copyIcon.innerHTML = '<span class="fonticon-copy"></span>';
-      copyIcon.classList = "icon-copy btn btn-sm btn-outline-info ms-sm-2";
+      copyIcon.classList = "icon-copy btn btn-sm btn-outline-info";
       copyIcon.title = "Copy card info to clipboard";
       trashIcon.parentNode.insertBefore(copyIcon, trashIcon.nextSibling);
       copyIcon.addEventListener("click", () => {
