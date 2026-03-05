@@ -176,6 +176,13 @@
     e.preventDefault();
     copyCards((setToScryfallFormat = true));
   });
+  
+  // adjust the delete form layout to make room for the new copy button
+  const deleteForm = document.querySelector("form[action$='WantsList_DeleteWant']");
+  if (deleteForm) {
+    deleteForm.classList.remove("d-sm-block");
+    deleteForm.classList.add("d-sm-flex");
+  }
 
   rows.forEach((row) => {
     //search for trash icon and add a copy icon after
