@@ -106,7 +106,7 @@
   inputAltSearch.id = "altSearch";
   inputAltSearch.name = "altSearch";
   inputAltSearch.className = "form-control";
-  inputAltSearch.style = "flex:0 0 85%";
+  inputAltSearch.style = "flex:0 0 80%";
   inputAltSearch.placeholder = "Start typing…";
 
   const inputAltSearchAdd = document.createElement("button");
