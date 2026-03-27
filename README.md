@@ -5,7 +5,7 @@
 
 </p>
 <p align="center">
- A extension to help with managing Magic: The Gathering wants lists on Cardmarket.
+ An extension to help with managing Magic: The Gathering wants lists on Cardmarket.
 </p>
 
 ## 📦 Features
