@@ -67,7 +67,7 @@
           showToast(
             `Parsed ${lines.length} lines from Scryfall! ${hasNotParsedSetsText}`,
             (ms = 5000),
-            (mode = "info")
+            (mode = "info"),
           );
         }
       } else {
@@ -79,8 +79,8 @@
   const disclaimerText = document.createElement("p");
   disclaimerText.className = "text-muted small text-center";
   disclaimerText.innerHTML = `
-    * This action is added by ${extensionName} and will try to parse the format <strong><pre class='d-inline text-info'>[ qty cardname (set) *]</pre></strong> list and convert it to Cardmarket format. 
-    If a set is not found, it will be added as is. 
+    * This action is added by ${extensionName} and will try to parse the format <strong><pre class='d-inline text-info'>[ qty cardname (set) *]</pre></strong> list and convert it to Cardmarket format.
+    If a set is not found, it will be added as is.
     The feature  is experimental, uses the Scryfall set code format and will not include alternative versions of the cards.
     `;
   h1Div.insertAdjacentElement("afterbegin", disclaimerText);
@@ -154,8 +154,8 @@
       // 1. Autocomplete endpoint (names only)
       const autoRes = await cachedFetch(
         `https://api.scryfall.com/cards/autocomplete?q=${encodeURIComponent(
-          term
-        )}`
+          term,
+        )}`,
       );
       const autoJson = await autoRes.json();
       const names = autoJson.data;
@@ -168,8 +168,8 @@
       const cardPromises = names.slice(0, 4).map(async (name) => {
         const cardRes = await cachedFetch(
           `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(
-            name
-          )}`
+            name,
+          )}`,
         );
         return cardRes.ok ? cardRes.json() : null;
       });
@@ -232,7 +232,7 @@
 
   inputAltSearch.addEventListener(
     "input",
-    debounce((e) => showSuggestions(e.target.value), 700)
+    debounce((e) => showSuggestions(e.target.value), 700),
   );
 
   // Hide on outside click
@@ -244,9 +244,8 @@
     const numCards = inputAltSearchNum.value;
     const cardName = inputAltSearch.value.trim();
     if (!cardName) return;
-    document.querySelector(
-      'textarea[name="addDecklist"]'
-    ).value += `${numCards} ${cardName}\n`;
+    document.querySelector('textarea[name="addDecklist"]').value +=
+      `${numCards} ${cardName}\n`;
     inputAltSearchNum.value = 1;
     inputAltSearch.value = "";
   });
@@ -291,9 +290,9 @@
     try {
       const res = await cachedFetch(
         `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(
-          cardName
+          cardName,
         )}`,
-        { signal: currentController.signal }
+        { signal: currentController.signal },
       );
       if (!res.ok) throw new Error("not found");
       const card = await res.json();

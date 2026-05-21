@@ -24,7 +24,7 @@
     let expansion = "";
     if (expansionTd) {
       const tooltipSpan = expansionTd.querySelector(
-        '[data-bs-toggle="tooltip"]'
+        '[data-bs-toggle="tooltip"]',
       );
       if (tooltipSpan) {
         expansion =
@@ -94,9 +94,9 @@
         `
             <label id='cardsOnListLabel' class='ms-3 small'>
               <input type='checkbox' name='cardsOnList' id='cardsOnList'/>
-              View Cards in list 
+              View Cards in list
             </label>
-            `
+            `,
       );
     }
 
@@ -122,7 +122,7 @@
 
   // Listen for storage changes to keep the in-page checkbox synced
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area !== 'local') return;
+    if (area !== "local") return;
     if (changes.cardsOnList !== undefined) {
       const newVal = !!changes.cardsOnList.newValue;
       const input = document.querySelector("input#cardsOnList");
@@ -130,7 +130,7 @@
       // Only take action if the value actually differs
       if (input.checked !== newVal) {
         input.checked = newVal;
-        input.dispatchEvent(new Event('change'));
+        input.dispatchEvent(new Event("change"));
       }
     }
   });
@@ -176,9 +176,11 @@
     e.preventDefault();
     copyCards((setToScryfallFormat = true));
   });
-  
+
   // adjust the delete form layout to make room for the new copy button
-  const deleteForm = document.querySelector("form[action$='WantsList_DeleteWant']");
+  const deleteForm = document.querySelector(
+    "form[action$='WantsList_DeleteWant']",
+  );
   if (deleteForm) {
     deleteForm.classList.remove("d-sm-block");
     deleteForm.classList.add("d-sm-flex");
@@ -208,7 +210,7 @@
             });
         } else {
           console.warn(
-            "[Cardmarket Copy List] No card info found for this row."
+            "[Cardmarket Copy List] No card info found for this row.",
           );
         }
       });

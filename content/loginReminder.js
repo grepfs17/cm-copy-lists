@@ -60,5 +60,4 @@
   passwordInput.addEventListener("change", async () => {
     await saveCredentialsSecure(usernameInput.value, passwordInput.value);
   });
-
 })();

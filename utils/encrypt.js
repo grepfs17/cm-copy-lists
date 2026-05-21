@@ -14,13 +14,10 @@ async function exportKey(key) {
 }
 
 async function importKey(jwk) {
-  return await crypto.subtle.importKey(
-    "jwk",
-    jwk,
-    { name: "AES-GCM" },
-    true,
-    ["encrypt", "decrypt"]
-  );
+  return await crypto.subtle.importKey("jwk", jwk, { name: "AES-GCM" }, true, [
+    "encrypt",
+    "decrypt",
+  ]);
 }
 
 async function getEncryptionKey() {
@@ -33,7 +30,7 @@ async function getEncryptionKey() {
   const key = await crypto.subtle.generateKey(
     { name: "AES-GCM", length: 256 },
     true,
-    ["encrypt", "decrypt"]
+    ["encrypt", "decrypt"],
   );
 
   const exportedKey = await exportKey(key);
@@ -51,7 +48,7 @@ async function encryptData(text) {
   const encrypted = await crypto.subtle.encrypt(
     { name: "AES-GCM", iv: iv },
     key,
-    data
+    data,
   );
 
   return {
@@ -68,7 +65,7 @@ async function decryptData(encryptedData) {
   const decrypted = await crypto.subtle.decrypt(
     { name: "AES-GCM", iv: iv },
     key,
-    encrypted
+    encrypted,
   );
 
   const decoder = new TextDecoder();

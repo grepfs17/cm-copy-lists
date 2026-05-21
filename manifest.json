@@ -3,20 +3,14 @@
   "description": "A extension to help with managing Magic: The Gathering wants lists on Cardmarket.",
   "version": "1.3.0",
   "manifest_version": 3,
-  "permissions": [
-    "clipboardWrite",
-    "clipboardRead",
-    "storage"
-  ],
+  "permissions": ["clipboardWrite", "clipboardRead", "storage"],
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "host_permissions": [
-    "https://www.cardmarket.com/*"
-  ],
+  "host_permissions": ["https://www.cardmarket.com/*"],
   "action": {
     "default_popup": "pages/popup.html",
     "default_icon": {
@@ -26,53 +20,31 @@
       "128": "icons/iconI128.png"
     }
   },
-  "popup_pages": [
-    "pages/how-it-works.html"
-  ],
+  "popup_pages": ["pages/how-it-works.html"],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://www.cardmarket.com/*/Magic/Users/*"
-      ],
-      "js": [
-        "content/usersHelpers.js"
-      ]
+      "matches": ["https://www.cardmarket.com/*/Magic/Users/*"],
+      "js": ["content/usersHelpers.js"]
     },
     {
-      "matches": [
-        "https://www.cardmarket.com/*/Magic/*"
-      ],
-      "js": [
-        "content/loginReminder.js"
-      ]
+      "matches": ["https://www.cardmarket.com/*/Magic/*"],
+      "js": ["content/loginReminder.js"]
     },
     {
-      "matches": [
-        "https://www.cardmarket.com/*/Magic/Wants/*"
-      ],
+      "matches": ["https://www.cardmarket.com/*/Magic/Wants/*"],
       "exclude_matches": [
         "https://www.cardmarket.com/*/Magic/Wants/*/AddDeckList*"
       ],
-      "js": [
-        "content/wantsCopyHelpers.js"
-      ],
-      "css": [
-        "styles.css"
-      ]
+      "js": ["content/wantsCopyHelpers.js"],
+      "css": ["styles.css"]
     },
     {
-      "matches": [
-        "https://www.cardmarket.com/*/Magic/Wants/*/AddDeckList"
-      ],
-      "js": [
-        "content/wantsAddHelpers.js"
-      ],
-      "css": [
-        "styles.css"
-      ]
+      "matches": ["https://www.cardmarket.com/*/Magic/Wants/*/AddDeckList"],
+      "js": ["content/wantsAddHelpers.js"],
+      "css": ["styles.css"]
     }
   ],
   "web_accessible_resources": [
@@ -83,9 +55,7 @@
         "utils/toast.js",
         "utils/cachedFetch.js"
       ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "matches": ["<all_urls>"]
     }
   ]
 }

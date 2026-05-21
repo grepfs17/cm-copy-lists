@@ -30,7 +30,7 @@
 
   // Keep the in-page checkbox synced when storage changes elsewhere
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area !== 'local') return;
+    if (area !== "local") return;
     if (changes.cardsOnList !== undefined) {
       const newVal = !!changes.cardsOnList.newValue;
       if (newVal === true) {
@@ -38,11 +38,8 @@
         listView("cardsOnList", rows);
       } else {
         window.location.reload();
-
       }
     }
   });
   // END: View cards on list in user offers
-
-
 })();

@@ -1,7 +1,7 @@
 export function showToast(
   text = "Copied to clipboard!",
   ms = 1500,
-  mode = "success"
+  mode = "success",
 ) {
   // remove any previous toast
   document.querySelectorAll(".cm-toast").forEach((el) => el.remove());
