@@ -9,25 +9,25 @@
     "storage"
   ],
   "icons": {
-    "16": "icon16.png",
-    "32": "icon32.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "host_permissions": [
     "https://www.cardmarket.com/*"
   ],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "pages/popup.html",
     "default_icon": {
-      "16": "iconI16.png",
-      "32": "iconI32.png",
-      "48": "iconI48.png",
-      "128": "iconI128.png"
+      "16": "icons/iconI16.png",
+      "32": "icons/iconI32.png",
+      "48": "icons/iconI48.png",
+      "128": "icons/iconI128.png"
     }
   },
   "popup_pages": [
-    "how-it-works.html"
+    "pages/how-it-works.html"
   ],
   "background": {
     "service_worker": "background.js"
@@ -38,7 +38,7 @@
         "https://www.cardmarket.com/*/Magic/Users/*"
       ],
       "js": [
-        "usersHelpers.js"
+        "content/usersHelpers.js"
       ]
     },
     {
@@ -46,7 +46,7 @@
         "https://www.cardmarket.com/*/Magic/*"
       ],
       "js": [
-        "loginReminder.js"
+        "content/loginReminder.js"
       ]
     },
     {
@@ -57,7 +57,7 @@
         "https://www.cardmarket.com/*/Magic/Wants/*/AddDeckList*"
       ],
       "js": [
-        "wantsCopyHelpers.js"
+        "content/wantsCopyHelpers.js"
       ],
       "css": [
         "styles.css"
@@ -68,7 +68,7 @@
         "https://www.cardmarket.com/*/Magic/Wants/*/AddDeckList"
       ],
       "js": [
-        "wantsAddHelpers.js"
+        "content/wantsAddHelpers.js"
       ],
       "css": [
         "styles.css"
